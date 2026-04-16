@@ -58,12 +58,6 @@ function M.setup(opts)
       dim = util.blend(v.blue, v.bg, 0.25),
     },
 
-    purple = {
-      default = v.purple,
-      soft = util.blend(v.purple, v.bg, 0.45),
-      dim = util.blend(v.purple, v.bg, 0.25),
-    },
-
     red = {
       default = v.red,
       soft = util.blend(v.red, v.bg, 0.45),
