@@ -1,61 +1,146 @@
----@class ColorScheme
-local ret = {
-  bg = {
-    sidebar = "#0D0D0D",
-    default = "#101010",
-    inactive = "#131313",
-    subtle = "#151515", -- panels / floats
-    tab = "#161616",
-    statusline = "#171717",
-    cursorline = "#181818",
-    option = "#1D1D1D",
-    scrollbar = "#202020",
-    popup = "#242424",
-    visual = "#262626",
-  },
-  fg = {
-    strong = "#FFFFFF", -- títulos importantes
-    default = "#E0E0E0", -- texto principal
-    muted = "#B0B0B0", -- texto secundario
-    subtle = "#909090", -- símbolos
-    faint = "#707070", -- UI secundaria
-    disabled = "#555555", -- comentarios
-    alternative = "#101010", -- texto invertido
-  },
-  border = {
-    subtle = "#1A1A1A",
-    strong = "#2E2E2E",
-    default = "#242424",
-  },
-  specials = {
-    member = "#C8C8C8",
-    keyword = "#A0A0A0",
-    symbol = "#808080",
-    comment = "#555555",
-    whitespace = "#707070",
-  },
+local palette = require("carvion.colors.palette")
+local util = require("carvion.util")
 
-  colors = {
-    orange = {
-      base = "#FF7A1A",
-      soft = "#E98A3A",
-      dim = "#B8652A",
+local M = {}
+
+function M.setup(opts)
+  opts = require("carvion.config").extend(opts)
+  local v = palette.dark
+
+  ---@class carvion.ColorScheme
+  local colors = {}
+
+  colors.ui = {
+    bg = {
+      default = v.bg,
+      sidebar = util.lighten(v.bg, 0.02),
+      float = util.lighten(v.bg, 0.04),
+      option = util.lighten(v.bg, 0.08),
+      none = "NONE",
     },
 
-    blue = { base = "#6F8FB0" },
-    green = { base = "#86CFA0" },
-    purple = { base = "#A18BD1" },
-    neutral = { base = "#8FA1B3" },
-  },
+    fg = {
+      default = v.fg,
+      muted = util.blend(v.fg, v.bg, 0.68),
+      subtle = util.blend(v.fg, v.bg, 0.52),
+      faint = util.blend(v.fg, v.bg, 0.48),
+      disabled = util.blend(v.fg, v.bg, 0.32),
+      inverse = v.bg,
+      none = "NONE",
+    },
 
-  diagnostics = {
-    error = { fg = "#E05A47", bg = "#240A06" },
-    warn = { fg = "#D98C3A", bg = "#211406" },
-    info = { fg = "#6F8FB0", bg = "#0E141A" },
-    hint = { fg = "#86CFA0", bg = "#0D2614" },
-  },
+    border = {
+      default = util.lighten(v.bg, 0.18),
+      subtle = util.lighten(v.bg, 0.12),
+      strong = util.lighten(v.bg, 0.28),
+    },
 
-  none = "none",
-}
+    cursorline = util.lighten(v.bg, 0.04),
+    visual = util.blend(v.fg, v.bg, 0.12),
+  }
 
-return ret
+  colors.accent = {
+    orange = {
+      default = v.orange,
+      soft = util.blend(v.orange, v.bg, 0.45),
+      dim = util.blend(v.orange, v.bg, 0.25),
+    },
+
+    green = {
+      default = v.green,
+      soft = util.blend(v.green, v.bg, 0.45),
+      dim = util.blend(v.green, v.bg, 0.25),
+    },
+
+    blue = {
+      default = v.blue,
+      soft = util.blend(v.blue, v.bg, 0.45),
+      dim = util.blend(v.blue, v.bg, 0.25),
+    },
+
+    purple = {
+      default = v.purple,
+      soft = util.blend(v.purple, v.bg, 0.45),
+      dim = util.blend(v.purple, v.bg, 0.25),
+    },
+
+    red = {
+      default = v.red,
+      soft = util.blend(v.red, v.bg, 0.45),
+      dim = util.blend(v.red, v.bg, 0.25),
+    },
+
+    yellow = {
+      default = v.yellow,
+      soft = util.blend(v.yellow, v.bg, 0.45),
+      dim = util.blend(v.yellow, v.bg, 0.25),
+    },
+
+    neutral = {
+      default = v.neutral,
+      soft = util.blend(v.neutral, v.bg, 0.45),
+      dim = util.blend(v.neutral, v.bg, 0.25),
+    },
+  }
+
+  colors.syntax = {
+    comments = util.blend(v.fg, v.bg, 0.42),
+
+    constants = colors.accent.neutral.default,
+    strings = colors.accent.green.default,
+    identifiers = colors.ui.fg.default,
+    functions = colors.accent.orange.default,
+
+    keywords = util.blend(v.fg, v.bg, 0.62),
+    operators = util.blend(v.fg, v.bg, 0.50),
+
+    types = colors.accent.blue.default,
+    members = util.blend(v.fg, v.bg, 0.78),
+    links = colors.accent.blue.default,
+  }
+  colors.diag = {
+    error = {
+      fg = colors.accent.red.default,
+      bg = util.blend(colors.accent.red.default, colors.ui.bg.default, 0.10),
+    },
+    warn = {
+      fg = colors.accent.yellow.default,
+      bg = util.blend(colors.accent.orange.default, colors.ui.bg.default, 0.10),
+    },
+    info = {
+      fg = colors.accent.blue.default,
+      bg = util.blend(colors.accent.blue.default, colors.ui.bg.default, 0.10),
+    },
+    hint = {
+      fg = colors.accent.green.default,
+      bg = util.blend(colors.accent.green.default, colors.ui.bg.default, 0.10),
+    },
+  }
+  colors.git = {
+    added = colors.accent.green.default,
+    changed = colors.accent.blue.default,
+    removed = colors.accent.red.default,
+  }
+  colors.diff = {
+    add = {
+      fg = colors.accent.green.default,
+      bg = util.blend(colors.accent.green.default, colors.ui.bg.default, 0.10),
+    },
+    change = {
+      fg = colors.accent.blue.default,
+      bg = util.blend(colors.accent.blue.default, colors.ui.bg.default, 0.10),
+    },
+    delete = {
+      fg = colors.accent.red.default,
+      bg = util.blend(colors.accent.red.default, colors.ui.bg.default, 0.10),
+    },
+    text = {
+      fg = colors.ui.fg.default,
+      bg = util.blend(colors.ui.fg.default, colors.ui.bg.default, 0.16),
+    },
+  }
+
+  return colors
+end
+
+return M

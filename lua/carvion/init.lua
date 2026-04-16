@@ -6,7 +6,7 @@ local M = {}
 function M.colorscheme(opts)
   opts = config.extend(opts)
 
-  local colors = require("carvion.colors")
+  local colors = require("carvion.colors").setup(opts)
   local groups = require("carvion.groups").setup(opts, colors)
 
   -- only needed to clear when not the default colorscheme

@@ -4,221 +4,224 @@ local M = {}
 function M.get(opts, c)
   return {
     -- Core UI
-    Normal = { fg = c.fg.default, bg = opts.transparent and c.none or c.bg.default },
-    NormalNC = { fg = c.fg.default, bg = opts.transparent and c.specials.none or c.bg.subtle },
-    NormalSB = { fg = c.fg.default, bg = c.bg.sidebar },
+    Normal = { fg = c.ui.fg.default, bg = opts.transparent and c.ui.bg.none or c.ui.bg.default },
+    NormalNC = "Normal",
+    NormalSB = { fg = c.ui.fg.default, bg = c.ui.bg.sidebar },
 
-    Conceal = { fg = c.fg.subtle },
+    Conceal = { fg = c.ui.fg.subtle },
 
-    Cursor = { fg = c.fg.alternative, bg = c.colors.orange.base },
+    Cursor = { fg = c.ui.fg.inverse, bg = c.accent.orange.default },
     lCursor = "Cursor",
     CursorIM = "Cursor",
 
-    CursorColumn = { bg = c.bg.cursorline },
+    CursorColumn = { bg = c.ui.cursorline },
     CursorLine = "CursorColumn",
-    CursorLineNr = { fg = c.colors.orange.base, bg = c.bg.cursorline },
+    CursorLineNr = { fg = c.accent.orange.default, bg = c.ui.cursorline },
 
-    ColorColumn = { bg = c.bg.cursorline },
+    ColorColumn = { bg = c.ui.cursorline },
 
-    LineNr = { fg = c.specials.comment },
+    LineNr = { fg = c.ui.fg.disabled },
     LineNrAbove = "LineNr",
     LineNrBelow = "LineNr",
 
-    Directory = { fg = c.colors.blue.base },
+    Directory = { fg = c.accent.orange.default },
 
-    EndOfBuffer = { fg = c.bg.default },
+    EndOfBuffer = { fg = c.ui.bg.default },
 
-    NonText = { fg = c.fg.disabled },
+    NonText = { fg = c.ui.fg.disabled },
 
-    Whitespace = { fg = c.specials.whitespace },
-    SpecialKey = { fg = c.specials.whitespace },
+    Whitespace = { fg = c.ui.fg.faint },
+    SpecialKey = "Whitespace",
 
-    Title = { fg = c.colors.orange.base, bold = true },
+    Title = { fg = c.accent.orange.default, bold = true },
 
-    Bold = { fg = c.fg.default, bold = true },
-    Italic = { fg = c.fg.default, italic = true },
+    Bold = { fg = c.ui.fg.default, bold = true },
+    Italic = { fg = c.ui.fg.default, italic = true },
 
     -- Window UI
-    VertSplit = { fg = c.border.default },
+    VertSplit = { fg = c.ui.border.default },
     WinSeparator = "VertSplit",
 
-    StatusLine = { fg = c.fg.default, bg = c.bg.statusline },
-    StatusLineNC = { fg = c.fg.muted, bg = c.bg.inactive },
+    StatusLine = { fg = c.ui.fg.default, bg = c.ui.bg.default },
+    StatusLineNC = { fg = c.ui.fg.muted, bg = c.ui.bg.default },
 
-    TabLine = { fg = c.fg.disabled, bg = c.bg.default },
-    TabLineFill = "TabLine",
-    TabLineSel = { fg = c.fg.alternative, bg = c.colors.orange.base },
+    TabLine = { fg = c.ui.fg.subtle, bg = c.ui.bg.float },
+    TabLineFill = { fg = c.ui.fg.default, bg = c.ui.bg.default },
+    TabLineSel = { fg = c.ui.fg.inverse, bg = c.accent.orange.default },
 
-    Folded = { fg = c.fg.subtle, bg = c.bg.subtle },
-    FoldColumn = { fg = c.fg.subtle, bg = opts.transparent and c.none or c.bg.default },
+    Folded = { fg = c.ui.fg.subtle, bg = c.ui.bg.float },
+    FoldColumn = { fg = c.ui.fg.subtle, bg = opts.transparent and c.ui.bg.none or c.ui.bg.default },
 
-    SignColumn = { fg = c.bg.default, bg = opts.transparent and c.specials.none or c.bg.default },
-    SignColumnSB = { fg = c.fg.default, bg = c.bg.sidebar },
+    SignColumn = { fg = c.ui.bg.default, bg = opts.transparent and c.ui.bg.none or c.ui.bg.default },
+    SignColumnSB = { fg = c.ui.fg.default, bg = c.ui.bg.sidebar },
 
-    WinBar = "StatusLine",
-    WinBarNC = "StatusLineNC",
+    WinBar = { fg = c.ui.fg.default, bg = c.ui.bg.sidebar },
+    WinBarNC = { fg = c.ui.fg.muted, bg = c.ui.bg.sidebar },
 
     -- Floating UI
-    NormalFloat = { fg = c.fg.default, bg = c.bg.subtle },
+    NormalFloat = { fg = c.ui.fg.default, bg = c.ui.bg.float },
 
-    FloatBorder = { fg = c.border.default, bg = c.bg.subtle },
-    FloatTitle = { fg = c.colors.orange.base, bg = c.bg.subtle, bold = true },
+    FloatBorder = { fg = c.ui.border.default, bg = c.ui.bg.float },
+    FloatTitle = { fg = c.accent.orange.default, bg = c.ui.bg.float, bold = true },
 
-    Pmenu = { fg = c.fg.default, bg = c.bg.subtle },
-    PmenuSel = { fg = c.fg.default, bg = c.bg.option },
-    PmenuMatch = { fg = c.colors.orange.base, bold = true },
+    Pmenu = { fg = c.ui.fg.default, bg = c.ui.bg.float },
+    PmenuSel = { fg = c.ui.fg.default, bg = c.ui.bg.option },
+    PmenuMatch = { fg = c.accent.orange.default, bold = true },
     PmenuMatchSel = "PmenuMatch",
 
-    PmenuSbar = { bg = c.bg.scrollbar },
-    PmenuThumb = { bg = c.border.strong },
+    PmenuSbar = { bg = c.ui.bg.float },
+    PmenuThumb = { bg = c.ui.border.subtle },
 
     -- Visual & Search
-    Visual = { bg = c.bg.visual },
-    VisualNOS = { bg = c.bg.visual },
+    Visual = { bg = c.ui.visual },
+    VisualNOS = "Visual",
 
-    Search = { fg = c.fg.alternative, bg = c.colors.orange.dim },
-    IncSearch = { fg = c.fg.alternative, bg = c.colors.orange.base, bold = true },
+    Search = { fg = c.ui.fg.inverse, bg = c.accent.orange.dim },
+    IncSearch = { fg = c.ui.fg.inverse, bg = c.accent.orange.default, bold = true },
     CurSearch = "IncSearch",
 
-    MatchParen = { fg = c.colors.orange.base, bold = true },
+    MatchParen = { fg = c.accent.orange.default, bold = true },
 
     -- Syntax
-    Comment = { fg = c.specials.comment, style = opts.styles.comments },
+    Comment = { fg = c.syntax.comments, style = opts.styles.comments },
 
-    Constant = { fg = c.colors.neutral.base },
-    String = { fg = c.colors.green.base, style = opts.styles.strings },
-    Character = { fg = c.colors.green.base },
-    -- Number = {},
-    -- Boolean = {},
-    -- Float = {},
+    Constant = { fg = c.syntax.constants },
+    String = { fg = c.syntax.strings, style = opts.styles.strings },
+    Character = { fg = c.syntax.strings },
+    Number = "Constant",
+    Boolean = "Constant",
+    Float = "Constant",
 
-    Identifier = { fg = c.fg.default, style = opts.styles.variables },
-    Function = { fg = c.colors.orange.base, style = opts.styles.functions },
+    Identifier = { fg = c.syntax.identifiers, style = opts.styles.variables },
+    Function = { fg = c.syntax.functions, style = opts.styles.functions },
 
-    Statement = { fg = c.specials.keyword },
-    -- Conditional = {},
-    -- Repeat = {},
-    -- Label = {},
-    Operator = { fg = c.specials.symbol },
-    Keyword = { fg = c.specials.keyword, style = opts.styles.keywords },
-    -- Exception = {},
+    Statement = { fg = c.syntax.keywords },
+    Conditional = "Statement",
+    Repeat = "Statement",
+    Label = "Statement",
+    Operator = { fg = c.syntax.operators },
+    Keyword = { fg = c.syntax.keywords, style = opts.styles.keywords },
+    Exception = "Statement",
 
-    PreProc = { fg = c.specials.keyword },
-    -- Include = {},
-    -- Define = {},
-    -- Macro = {},
-    -- PreCondit = {},
+    PreProc = { fg = c.syntax.keywords },
+    Include = "PreProc",
+    Define = "PreProc",
+    Macro = "PreProc",
+    PreCondit = "PreProc",
 
-    Type = { fg = c.colors.blue.base, style = opts.styles.types },
-    -- StorangeClass = {},
-    -- Structure = {},
-    -- Typedef = {},
+    Type = { fg = c.syntax.identifiers, style = opts.styles.types },
+    StorangeClass = { fg = c.syntax.keywords },
+    Structure = "StorangeClass",
+    Typedef = { fg = c.syntax.functions },
 
-    Special = { fg = c.specials.symbol },
-    -- SpecialChar - {},
-    -- Tag = {},
-    Delimiter = { fg = c.specials.symbol },
-    -- SpecialComment = {},
-    Debug = { fg = c.colors.orange.base },
+    Special = { fg = c.syntax.operators },
+    SpecialChar = "Special",
+    SpecialComment = "Special",
+    Tag = "Special",
+
+    Delimiter = { fg = c.syntax.operators },
+
+    Debug = { fg = c.accent.orange.default },
 
     Underlined = { underline = true },
 
-    -- Ignore = {},
+    Ignore = { fg = c.ui.fg.default },
 
-    Error = { fg = c.diagnostics.error.fg, bold = true },
+    -- Error = { fg = c.diagnostics.error.fg, bold = true },
 
-    Todo = { fg = c.fg.default, bold = true },
+    Todo = { fg = c.ui.fg.default, bold = true },
 
-    -- Added = {},
-    -- Changed = {},
-    -- Removed = {},
+    Added = { fg = c.git.added },
+    Changed = { fg = c.git.changed },
+    Removed = { fg = c.git.removed },
 
     -- Messages
-    ErrorMsg = { fg = c.diagnostics.error.fg },
-    WarningMsg = { fg = c.colors.orange.soft },
+    ErrorMsg = { fg = c.accent.red.default },
+    WarningMsg = { fg = c.accent.orange.soft },
 
-    ModeMsg = { fg = c.colors.blue.base, bold = true },
-    MsgArea = { fg = c.fg.default },
-    MoreMsg = { fg = c.colors.green.base },
+    ModeMsg = { fg = c.accent.blue.default, bold = true },
+    MsgArea = { fg = c.ui.fg.muted },
+    MoreMsg = { fg = c.accent.green.default },
 
-    Question = { fg = c.colors.blue.base },
-    Substitute = { fg = c.fg.alternative, bg = c.colors.orange.soft },
+    Question = { fg = c.accent.blue.default },
+    Substitute = { fg = c.ui.fg.inverse, bg = c.accent.orange.soft },
 
     -- Navigation
-    QuickFixLine = { bg = c.bg.visual },
-    WildMenu = { fg = c.fg.default, bg = c.bg.option },
+    QuickFixLine = { bg = c.ui.visual },
+    WildMenu = { fg = c.ui.fg.default, bg = c.ui.bg.option },
 
     -- Spell
-    SpellBad = { sp = c.diagnostics.error.fg, undercurl = true },
-    SpellCap = { sp = c.diagnostics.warn.fg, undercurl = true },
-    SpellLocal = { sp = c.diagnostics.info.fg, undercurl = true },
-    SpellRare = { sp = c.diagnostics.hint.fg, undercurl = true },
+    SpellBad = { sp = c.accent.red.default, undercurl = true },
+    SpellCap = { sp = c.accent.orange.soft, undercurl = true },
+    SpellLocal = { sp = c.accent.blue.default, undercurl = true },
+    SpellRare = { sp = c.accent.green.default, undercurl = true },
 
     -- Language Services Protocol
-    LspReferenceText = { fg = "red", bg = c.bg.option },
-    LspReferenceRead = { bg = c.bg.option },
-    LspReferenceWrite = { bg = c.bg.option },
+    LspReferenceText = { bg = c.ui.bg.option },
+    LspReferenceRead = { bg = c.ui.bg.option },
+    LspReferenceWrite = { bg = c.ui.bg.option },
 
-    LspSignatureActiveParameter = { bg = c.bg.visual },
-    LspCodeLens = { fg = c.fg.disabled },
-    LspCodeLensSeparator = { fg = c.fg.faint },
-    LspInlayHint = { fg = c.diagnostics.hint.fg },
-    LspInfoBorder = { fg = c.fg.default, bg = c.bg.subtle },
-    ComplHint = { fg = c.colors.blue.base },
+    LspSignatureActiveParameter = { bg = c.ui.visual },
+    LspCodeLens = { fg = c.ui.fg.faint },
+    LspCodeLensSeparator = { fg = c.ui.fg.faint },
+
+    LspInlayHint = { fg = c.accent.green.default },
+    LspInfoBorder = { fg = c.ui.fg.default, bg = c.ui.bg.float },
+    ComplHint = { fg = c.accent.blue.default },
 
     -- Diagnostics
-    DiagnosticError = { fg = c.diagnostics.error.fg },
-    DiagnosticWarn = { fg = c.diagnostics.warn.fg },
-    DiagnosticInfo = { fg = c.diagnostics.info.fg },
-    DiagnosticHint = { fg = c.diagnostics.hint.fg },
+    DiagnosticError = { fg = c.diag.error.fg },
+    DiagnosticWarn = { fg = c.diag.warn.fg },
+    DiagnosticInfo = { fg = c.diag.info.fg },
+    DiagnosticHint = { fg = c.diag.hint.fg },
 
-    DiagnosticUnnecessary = { fg = c.colors.orange.dim },
+    DiagnosticUnnecessary = { fg = c.ui.fg.subtle },
 
-    DiagnosticVirtualTextError = { fg = c.diagnostics.error.fg, bg = c.diagnostics.error.bg },
-    DiagnosticVirtualTextWarn = { fg = c.diagnostics.warn.fg, bg = c.diagnostics.warn.bg },
-    DiagnosticVirtualTextInfo = { fg = c.diagnostics.info.fg, bg = c.diagnostics.info.bg },
-    DiagnosticVirtualTextHint = { fg = c.diagnostics.hint.fg, bg = c.diagnostics.hint.bg },
+    DiagnosticVirtualTextError = { fg = c.diag.error.fg, bg = c.diag.error.bg },
+    DiagnosticVirtualTextWarn = { fg = c.diag.warn.fg, bg = c.diag.warn.bg },
+    DiagnosticVirtualTextInfo = { fg = c.diag.info.fg, bg = c.diag.info.bg },
+    DiagnosticVirtualTextHint = { fg = c.diag.hint.fg, bg = c.diag.hint.bg },
 
-    DiagnosticUnderlineError = { sp = c.diagnostics.error.fg, undercurl = true },
-    DiagnosticUnderlineWarn = { sp = c.diagnostics.warn.fg, undercurl = true },
-    DiagnosticUnderlineInfo = { sp = c.diagnostics.info.fg, undercurl = true },
-    DiagnosticUnderlineHint = { sp = c.diagnostics.hint.fg, undercurl = true },
+    DiagnosticUnderlineError = { sp = c.diag.error.fg, undercurl = true },
+    DiagnosticUnderlineWarn = { sp = c.diag.warn.fg, undercurl = true },
+    DiagnosticUnderlineInfo = { sp = c.diag.info.fg, undercurl = true },
+    DiagnosticUnderlineHint = { sp = c.diag.hint.fg, undercurl = true },
 
     -- Diff
-    DiffAdd = { fg = c.diagnostics.hint.fg, bg = c.diagnostics.hint.bg },
-    DiffChange = { fg = c.diagnostics.info.fg, bg = c.diagnostics.info.bg },
-    DiffDelete = { fg = c.diagnostics.error.fg, bg = c.diagnostics.error.bg },
-    DiffText = { fg = c.fg.default, bg = c.bg.option },
+    DiffAdd = { fg = c.diff.add.fg, bg = c.diff.add.bg },
+    DiffChange = { fg = c.diff.change.fg, bg = c.diff.change.bg },
+    DiffDelete = { fg = c.diff.delete.fg, bg = c.diff.delete.bg },
+    DiffText = { fg = c.diff.text.fg, bg = c.diff.text.bg },
 
-    diffAdded = { fg = c.diagnostics.hint.fg },
-    diffRemoved = { fg = c.diagnostics.error.fg },
-    diffChanged = { fg = c.diagnostics.info.fg },
+    diffAdded = { fg = c.diff.add.fg },
+    diffRemoved = { fg = c.diff.delete.fg },
+    diffChanged = { fg = c.diff.change.fg },
 
-    diffOldFile = { fg = c.specials.comment },
-    diffNewFile = { fg = c.colors.green.base },
-    diffFile = { fg = c.colors.blue.base },
-    diffLine = { fg = c.specials.comment },
-    diffIndexLine = { fg = c.colors.neutral.base },
+    diffOldFile = { fg = c.syntax.comments },
+    diffNewFile = { fg = c.diff.add.fg },
+    diffFile = { fg = c.diff.change.fg },
+    diffLine = { fg = c.syntax.comments },
+    diffIndexLine = { fg = c.accent.neutral.base },
 
     -- Health
-    healthError = { fg = c.diagnostics.error.fg },
-    healthSuccess = { fg = c.diagnostics.hint.fg },
-    healthWarning = { fg = c.diagnostics.warn.fg },
+    healthError = { fg = c.diag.error.fg },
+    healthSuccess = { fg = c.diag.hint.fg },
+    healthWarning = { fg = c.diag.warn.fg },
 
     -- Quickfix & Help
-    qfFileName = { fg = c.colors.blue.base },
-    qfLineNr = { fg = c.colors.neutral.base },
+    qfFileName = { fg = c.accent.blue.default },
+    qfLineNr = { fg = c.accent.neutral.default },
 
-    helpExample = { fg = c.specials.comment },
-    helpCommand = { fg = c.colors.orange.base },
+    helpExample = { fg = c.ui.fg.muted },
+    helpCommand = { fg = c.accent.orange.default },
 
     -- Debug
-    debugBreakpoint = { fg = c.diagnostics.info.fg },
-    debugPC = { bg = c.bg.option },
+    debugBreakpoint = { fg = c.diag.info.fg },
+    debugPC = { bg = c.ui.bg.option },
 
     -- Filestypes
-    dosIniLabel = { fg = c.colors.orange.base },
-    htmlH1 = { fg = c.colors.orange.base },
+    dosIniLabel = { fg = c.accent.orange.default },
+    htmlH1 = { fg = c.accent.orange.default },
     htmlH2 = "htmlH1",
   }
 end

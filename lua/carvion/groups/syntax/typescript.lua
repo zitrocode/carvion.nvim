@@ -1,11 +1,11 @@
 local M = {}
 
 ---@type carvion.HighlightsFn
-function M.get(_, c)
+function M.get(opts, c)
   return {
     -- typescript
-    ["@type.typescript"] = { fg = c.colors.blue.base },
-    ["@type.builtin.typescript"] = "@type.typescript",
+    -- ["@type.typescript"] = { fg = c.colors.blue.base },
+    -- ["@type.builtin.typescript"] = "@type.typescript",
 
     -- TSX
     -- ["@constructor.tsx"] = { fg = c.blue500 },

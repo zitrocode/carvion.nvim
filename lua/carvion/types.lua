@@ -11,4 +11,4 @@
 
 ---@alias carvion.Highlights table<string,carvion.Highlight|string>
 
----@alias carvion.HighlightsFn fun(opts: carvion.Config, colors: ColorScheme):carvion.Highlights
+---@alias carvion.HighlightsFn fun(opts: carvion.Config, colors: carvion.ColorScheme):carvion.Highlights
