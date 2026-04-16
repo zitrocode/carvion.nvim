@@ -105,7 +105,7 @@ function M.setup(opts)
     },
     warn = {
       fg = colors.accent.yellow.default,
-      bg = util.blend(colors.accent.orange.default, colors.ui.bg.default, 0.10),
+      bg = util.blend(colors.accent.yellow.default, colors.ui.bg.default, 0.10),
     },
     info = {
       fg = colors.accent.blue.default,
