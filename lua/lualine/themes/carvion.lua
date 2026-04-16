@@ -1,41 +1,104 @@
-local palette = require("carvion.colors")
+local palette = require("carvion.colors").setup()
 local carvion = {}
 
 carvion.normal = {
-  a = { fg = palette.fg.alternative, bg = palette.colors.orange.base },
-  b = { fg = palette.colors.orange.base, bg = palette.bg.popup },
-  c = { fg = palette.fg.default, bg = palette.bg.statusline },
+  a = {
+    fg = palette.ui.fg.inverse,
+    bg = palette.accent.orange.default,
+    gui = "bold",
+  },
+
+  b = {
+    fg = palette.accent.orange.default,
+    bg = palette.ui.bg.float,
+  },
+
+  c = {
+    fg = palette.ui.fg.default,
+    bg = palette.ui.bg.default,
+  },
 }
 
 carvion.insert = {
-  a = { fg = palette.bg.default, bg = palette.colors.green.base },
-  b = { fg = palette.colors.green.base, bg = palette.bg.popup },
+  a = {
+    fg = palette.ui.bg.default,
+    bg = palette.accent.green.default,
+    gui = "bold",
+  },
+
+  b = {
+    fg = palette.accent.green.default,
+    bg = palette.ui.bg.float,
+  },
 }
 
 carvion.visual = {
-  a = { fg = palette.bg.default, bg = palette.colors.neutral.base },
-  b = { fg = palette.colors.neutral.base, bg = palette.bg.popup },
+  a = {
+    fg = palette.ui.bg.default,
+    bg = palette.accent.neutral.default,
+    gui = "bold",
+  },
+
+  b = {
+    fg = palette.accent.neutral.default,
+    bg = palette.ui.bg.float,
+  },
 }
 
 carvion.replace = {
-  a = { fg = palette.bg.default, bg = palette.diagnostics.error.fg },
-  b = { fg = palette.diagnostics.error.fg, bg = palette.bg.popup },
+  a = {
+    fg = palette.ui.bg.default,
+    bg = palette.accent.red.default,
+    gui = "bold",
+  },
+
+  b = {
+    fg = palette.accent.red.default,
+    bg = palette.ui.bg.float,
+  },
 }
 
 carvion.command = {
-  a = { fg = palette.bg.default, bg = palette.colors.blue.base },
-  b = { fg = palette.colors.blue.base, bg = palette.bg.popup },
+  a = {
+    fg = palette.ui.bg.default,
+    bg = palette.accent.blue.default,
+    gui = "bold",
+  },
+
+  b = {
+    fg = palette.accent.blue.default,
+    bg = palette.ui.bg.float,
+  },
 }
 
 carvion.terminal = {
-  a = { fg = palette.fg.alternative, bg = palette.fg.strong },
-  b = { fg = palette.fg.default, bg = palette.fg.disabled },
+  a = {
+    fg = palette.ui.fg.default,
+    bg = palette.ui.bg.option,
+    gui = "bold",
+  },
+
+  b = {
+    fg = palette.ui.fg.default,
+    bg = palette.ui.bg.float,
+  },
 }
 
 carvion.inactive = {
-  a = { fg = palette.fg.muted, bg = palette.bg.statusline },
-  b = { fg = palette.fg.muted, bg = palette.bg.statusline, gui = "bold" },
-  c = { fg = palette.fg.muted, bg = palette.bg.statusline },
+  a = {
+    fg = palette.ui.fg.faint,
+    bg = palette.ui.bg.sidebar,
+  },
+
+  b = {
+    fg = palette.ui.fg.faint,
+    bg = palette.ui.bg.sidebar,
+  },
+
+  c = {
+    fg = palette.ui.fg.muted,
+    bg = palette.ui.bg.sidebar,
+  },
 }
 
 return carvion
