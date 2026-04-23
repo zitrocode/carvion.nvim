@@ -223,6 +223,9 @@ function M.get(opts, c)
     dosIniLabel = { fg = c.accent.orange.default },
     htmlH1 = { fg = c.accent.orange.default },
     htmlH2 = "htmlH1",
+
+    -- Mini
+    MiniPickMatchCurrent = { bg = c.ui.bg.option },
   }
 end
 
