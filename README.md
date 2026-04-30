@@ -118,6 +118,7 @@ Carvion.nvim includes highlight support for selected plugins.
 
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+- [mini.pick](https://github.com/nvim-mini/mini.pick)
 
 Plugin highlights are loaded automatically when the plugins in available.
 

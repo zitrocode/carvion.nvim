@@ -131,6 +131,7 @@ Currently Supported ~
 
 - Treesitter                https://github.com/nvim-treesitter/nvim-treesitter
 - Lualine.nvim                    https://github.com/nvim-lualine/lualine.nvim
+- Minipick                              https://github.com/nvim-mini/mini.pick
 
 Plugin highlights are loaded automatically when the plugins in available.
 
