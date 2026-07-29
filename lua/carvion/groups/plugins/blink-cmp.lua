@@ -42,7 +42,7 @@ function M.get(_, c)
 
     BlinkCmpMenu = "Pmenu",
     BlinkCmpMenuBorder = "FloatBorder",
-    BlinkCmpMenuSelection = { fg = c.ui.fg.default, bg = c.ui.bg.option, bold = true },
+    BlinkCmpMenuSelection = { bg = c.ui.bg.option },
     BlinkCmpScrollBarGutter = { bg = c.ui.bg.option },
     BlinkCmpScrollBarThumb = { bg = c.ui.border.default },
 
