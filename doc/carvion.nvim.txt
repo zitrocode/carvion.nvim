@@ -129,6 +129,7 @@ Carvion.nvim includes highlight support for selected plugins.
 
 Currently Supported ~
 
+- Blink.cmp                             https://github.com/saghen/blink.cmp
 - Treesitter                https://github.com/nvim-treesitter/nvim-treesitter
 - Lualine.nvim                    https://github.com/nvim-lualine/lualine.nvim
 - Minipick                              https://github.com/nvim-mini/mini.pick

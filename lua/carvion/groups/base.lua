@@ -65,7 +65,7 @@ function M.get(opts, c)
     FloatTitle = { fg = c.accent.orange.default, bg = c.ui.bg.float, bold = true },
 
     Pmenu = { fg = c.ui.fg.default, bg = c.ui.bg.float },
-    PmenuSel = { fg = c.ui.fg.default, bg = c.ui.bg.option },
+    PmenuSel = { bg = c.ui.bg.option },
     PmenuMatch = { fg = c.accent.orange.default, bold = true },
     PmenuMatchSel = "PmenuMatch",
 
