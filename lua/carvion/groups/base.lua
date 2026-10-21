@@ -50,9 +50,10 @@ function M.get(opts, c)
     TabLineSel = { fg = c.ui.fg.inverse, bg = c.accent.orange.default },
 
     Folded = { fg = c.ui.fg.subtle, bg = c.ui.bg.float },
-    FoldColumn = { fg = c.ui.fg.subtle, bg = opts.transparent and c.ui.bg.none or c.ui.bg.default },
+    -- No bg so the column inherits the window's Normal (e.g. NormalFloat in floats)
+    FoldColumn = { fg = c.ui.fg.subtle },
 
-    SignColumn = { fg = c.ui.bg.default, bg = opts.transparent and c.ui.bg.none or c.ui.bg.default },
+    SignColumn = { fg = c.ui.bg.default },
     SignColumnSB = { fg = c.ui.fg.default, bg = c.ui.bg.sidebar },
 
     WinBar = { fg = c.ui.fg.default, bg = c.ui.bg.sidebar },
